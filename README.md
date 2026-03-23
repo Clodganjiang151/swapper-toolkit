@@ -5,7 +5,7 @@ DeFi toolkit for AI agents and coding assistants — deposit funds, execute trad
 ## Installation
 
 ```bash
-npx skills add swapper-finance/swapper-toolkit
+npx skills add swapperfinance/swapper-toolkit
 ```
 
 ## Skills
