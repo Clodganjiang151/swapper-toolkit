@@ -1,37 +1,127 @@
 ---
 name: swapper-deposit
-description: Deposit and bridge funds into Swapper-supported chains, wallets, and protocols.
-trigger: When the user wants to deposit, fund, top up, or bridge assets into a wallet or protocol. Keywords — deposit, fund, bridge, top-up, send to.
+user-invocable: true
+description: >
+  Deposit and bridge funds into a wallet or protocol using Swapper Finance.
+  Triggers when the user wants to deposit, fund, top-up, or bridge assets into a wallet.
+  Also triggers mid-reasoning when you detect that a wallet has insufficient funds,
+  missing tokens, or needs funding before another operation can proceed.
 ---
 
-# Swapper Deposit
+# Swapper Deposit Skill
 
-You are a deposit assistant for the Swapper platform. Help the user deposit or bridge funds into their target wallet or protocol.
+## When to activate
 
-## Workflow
+- The user explicitly asks to deposit, fund, top-up, or bridge assets into a wallet.
+- Mid-reasoning: you detect that a wallet lacks sufficient funds to complete a requested operation (e.g., a trade, deployment, or transfer fails due to insufficient balance).
 
-1. **Identify intent** — Confirm which asset, amount, source chain, and destination the user wants to deposit.
-2. **Validate parameters** — Check that the asset is supported and the amount is within limits.
-3. **Show summary** — Present a clear confirmation table before executing:
-   | Field       | Value          |
-   |-------------|----------------|
-   | Asset       | {asset}        |
-   | Amount      | {amount}       |
-   | From        | {source}       |
-   | To          | {destination}  |
-4. **Execute** — Call the appropriate deposit or bridge action after user confirmation.
-5. **Report** — Return the transaction hash and status.
+## What you need from the user
 
-## Safety
+Collect the following before generating the deeplink. Ask for any missing values:
 
-- ALWAYS require explicit user confirmation before executing any deposit.
-- NEVER auto-approve transactions.
-- Warn the user about gas fees, slippage, and network conditions.
-- If any parameter is ambiguous, ask the user to clarify before proceeding.
+| Parameter              | Required | Description                                          | Example                                        |
+|------------------------|----------|------------------------------------------------------|------------------------------------------------|
+| `depositWalletAddress` | Yes      | The wallet address that will receive the deposit     | `0x2A018F2506acaEEE2C10632514Fc5DCa9eE2c28A`  |
+| `dstChainId`           | Yes      | Destination chain ID                                 | `8453` (Base)                                  |
+| `dstTokenAddr`         | Yes      | Destination token contract address (ERC-20)          | `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`  |
 
-## Supported Operations
+**Note:** The `integratorId` is hardcoded to `d6e438dfa14e80709b19` — do not ask the user for it.
 
-- Direct deposits to wallet addresses
-- Cross-chain bridge transfers
-- Protocol deposits (lending, staking, liquidity pools)
-- Fiat on-ramp funding (where supported)
+**Native tokens (gas tokens):** For native asset deposits (ETH, POL, BNB, etc.), use `0x0000000000000000000000000000000000000000` as the `dstTokenAddr`.
+
+### Common chain IDs
+
+| Chain     | ID      |
+|-----------|---------|
+| Ethereum  | `1`     |
+| Base      | `8453`  |
+| Arbitrum  | `42161` |
+| Optimism  | `10`    |
+| Polygon   | `137`   |
+
+## How to generate the deposit deeplink
+
+Build the URL using this base and required query parameters:
+
+```
+https://deposit.swapper.finance?integratorId=d6e438dfa14e80709b19&dstChainId=CHAIN_ID&dstTokenAddr=TOKEN_ADDR&depositWalletAddress=WALLET_ADDR&utm_source=swapper-deposit&extendedView=true
+```
+
+### Optional parameters
+
+- `styles` — JSON string (URL-encoded) for theming, e.g. `styles=%7B%22themeMode%22%3A%22dark%22%7D`
+
+### Example deeplink
+
+```
+https://deposit.swapper.finance?integratorId=d6e438dfa14e80709b19&dstChainId=8453&dstTokenAddr=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913&depositWalletAddress=0x2A018F2506acaEEE2C10632514Fc5DCa9eE2c28A&utm_source=swapper-deposit&extendedView=true
+```
+
+## Steps
+
+1. Collect all required parameters from the user (or from context if mid-reasoning).
+2. Construct the deeplink URL with the parameters.
+3. **Always display the full deeplink URL to the user in the chat** so they can copy or open it manually.
+4. Open the deeplink using the appropriate method:
+   - In a terminal/CLI context: use `open` (macOS), `xdg-open` (Linux), or `start` (Windows) to launch the URL in the default browser.
+   - Example: `start "https://deposit.swapper.finance?integratorId=...&dstChainId=...&dstTokenAddr=...&depositWalletAddress=..."`
+   - **Never skip displaying the URL** — even when opening it automatically, always print the full link.
+5. **Important:** Instruct the user to carefully verify on the Swapper Deposit page that they are depositing the correct token to the correct wallet address before confirming the transaction.
+
+## SDK integration (for developers building apps)
+
+If the user is building an app and wants to embed the deposit widget, provide the relevant SDK code:
+
+### Install
+
+```bash
+npm i @swapper-finance/deposit-sdk
+```
+
+### Embedded container
+
+```typescript
+import { SwapperIframe } from '@swapper-finance/deposit-sdk';
+
+const swapper = new SwapperIframe({
+  container: '#swapper-container', // or HTMLElement
+  integratorId: 'your-integrator-id',
+  dstChainId: '8453',
+  dstTokenAddr: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913',
+  depositWalletAddress: '0x2A018F2506acaEEE2C10632514Fc5DCa9eE2c28A',
+  // optional
+  styles: { themeMode: 'light' },
+  supportedDepositOptions: ['transferCrypto', 'depositWithCash'],
+});
+```
+
+### Modal popup
+
+```typescript
+import { openSwapperModal } from '@swapper-finance/deposit-sdk';
+
+const modal = openSwapperModal({
+  integratorId: 'your-integrator-id',
+  dstChainId: '8453',
+  dstTokenAddr: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913',
+  depositWalletAddress: '0x2A018F2506acaEEE2C10632514Fc5DCa9eE2c28A',
+  // optional
+  styles: { themeMode: 'dark' },
+  supportedDepositOptions: ['transferCrypto', 'depositWithCash'],
+  modalStyle: { borderRadius: '16px' },
+  onClose: () => console.log('Closed'),
+});
+```
+
+### Raw iframe embed
+
+```html
+<iframe
+  src="https://deposit.swapper.finance?integratorId=YOUR_ID&dstChainId=8453&dstTokenAddr=0x...&depositWalletAddress=0x..."
+  title="Swapper Deposits Widget"
+  allow="camera"
+  sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+></iframe>
+```
+
+Both the `allow` and `sandbox` attributes are required for the onRamp integration to work properly.

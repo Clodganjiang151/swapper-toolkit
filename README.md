@@ -23,33 +23,6 @@ Deposit and bridge funds into wallets and protocols.
 - Protocol deposits (lending, staking, liquidity pools)
 - Fiat on-ramp funding (where supported)
 
-### Swapper Trade
-
-Execute token swaps and trades across DEXs and aggregators.
-
-```
-/swapper-trade
-```
-
-- Token-to-token swaps
-- Market and limit orders (where supported)
-- Multi-hop routing for best execution
-- Cross-chain swaps via bridge + DEX
-
-### Swapper Wallet Management
-
-Create, import, list, and manage crypto wallets and keys.
-
-```
-/swapper-wallet-management
-```
-
-- Create new wallets (EVM, Solana, and other supported chains)
-- Import wallets from mnemonic, private key, or keystore
-- List wallets and balances
-- Export keys (with explicit consent)
-- Label and organize wallets
-
 ## Safety
 
 All skills enforce strict safety rules:

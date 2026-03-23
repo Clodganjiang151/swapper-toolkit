@@ -5,8 +5,6 @@ A Claude Code skill pack for DeFi operations: depositing funds, executing trades
 ## Skills
 
 - **swapper-deposit** — Deposit and bridge assets into wallets and protocols
-- **swapper-trade** — Execute token swaps and trades across DEXs
-- **swapper-wallet-management** — Create, import, and manage wallets and balances
 
 ## Usage
 
@@ -14,8 +12,6 @@ Invoke skills via slash commands:
 
 ```
 /swapper-deposit
-/swapper-trade
-/swapper-wallet-management
 ```
 
 ## Development
