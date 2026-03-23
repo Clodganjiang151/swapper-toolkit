@@ -1,0 +1,36 @@
+{
+  "name": "@swapper/toolkit",
+  "displayName": "Swapper Toolkit",
+  "description": "DeFi toolkit for AI agents and coding assistants — deposit funds, execute trades, and manage crypto wallets. Works with Claude Code, Cursor, Windsurf, OpenClaw, CrewAI, AutoGPT, and other AI agent frameworks.",
+  "version": "0.1.0",
+  "publisher": "swapper",
+  "categories": ["DeFi", "Crypto", "Finance", "Trading", "AI Agents", "Autonomous Agents"],
+  "icon": "icon.png",
+  "skills": [
+    {
+      "id": "swapper-deposit",
+      "name": "Swapper Deposit",
+      "description": "Deposit funds into Swapper-supported chains and protocols.",
+      "trigger": "When the user wants to deposit, fund, or bridge assets into a wallet or protocol.",
+      "entrypoint": "skills/swapper-deposit/skill.md"
+    },
+    {
+      "id": "swapper-trade",
+      "name": "Swapper Trade",
+      "description": "Execute token swaps and trades across supported DEXs and aggregators.",
+      "trigger": "When the user wants to swap, trade, buy, or sell tokens.",
+      "entrypoint": "skills/swapper-trade/skill.md"
+    },
+    {
+      "id": "swapper-wallet-management",
+      "name": "Swapper Wallet Management",
+      "description": "Create, import, list, and manage crypto wallets and keys.",
+      "trigger": "When the user wants to create a wallet, check balances, list accounts, or manage keys.",
+      "entrypoint": "skills/swapper-wallet-management/skill.md"
+    }
+  ],
+  "install": {
+    "instructions": "Add this toolkit to your project: claude mcp add-skill @swapper/toolkit",
+    "postInstall": "Run /swapper-wallet-management to set up your first wallet."
+  }
+}

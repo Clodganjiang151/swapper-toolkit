@@ -1,0 +1,46 @@
+{
+  "name": "@swapper/toolkit",
+  "version": "0.1.0",
+  "description": "DeFi toolkit for AI agents and coding assistants — deposit funds, execute trades, and manage crypto wallets. Works with Claude Code, Cursor, Windsurf, OpenClaw, CrewAI, AutoGPT, and other AI agent frameworks.",
+  "keywords": [
+    "claude-code",
+    "cursor",
+    "windsurf",
+    "copilot",
+    "openclaw",
+    "crewai",
+    "autogpt",
+    "langchain",
+    "ai-agent",
+    "ai-coding-assistant",
+    "ai-agent-tools",
+    "autonomous-agents",
+    "defi",
+    "crypto",
+    "trading",
+    "wallet",
+    "token-swap",
+    "dex",
+    "blockchain",
+    "web3"
+  ],
+  "author": "swapper",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swapper/swapper-toolkit"
+  },
+  "claude-code": {
+    "type": "skill-pack",
+    "skills": [
+      "skills/swapper-deposit",
+      "skills/swapper-trade",
+      "skills/swapper-wallet-management"
+    ]
+  },
+  "files": [
+    "skills/",
+    "CLAUDE.md",
+    "marketplace.json"
+  ]
+}

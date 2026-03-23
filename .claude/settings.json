@@ -1,0 +1,16 @@
+{
+  "skills": {
+    "swapper-deposit": {
+      "path": "skills/swapper-deposit/skill.md",
+      "type": "user-invocable"
+    },
+    "swapper-trade": {
+      "path": "skills/swapper-trade/skill.md",
+      "type": "user-invocable"
+    },
+    "swapper-wallet-management": {
+      "path": "skills/swapper-wallet-management/skill.md",
+      "type": "user-invocable"
+    }
+  }
+}
