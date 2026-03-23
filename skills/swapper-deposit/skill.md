@@ -38,6 +38,7 @@ Collect the following before generating the deeplink. Ask for any missing values
 | Arbitrum  | `42161` |
 | Optimism  | `10`    |
 | Polygon   | `137`   |
+| Fast      | `fast`  |
 
 ## How to generate the deposit deeplink
 
