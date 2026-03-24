@@ -3,9 +3,15 @@ name: swapper-deposit
 user-invocable: true
 description: >
   Deposit and bridge funds into a wallet or protocol using Swapper Finance.
-  Triggers when the user wants to deposit, fund, top-up, or bridge assets into a wallet.
-  Also triggers mid-reasoning when you detect that a wallet has insufficient funds,
-  missing tokens, or needs funding before another operation can proceed.
+  Handles fiat on-ramp (card payments via Mastercard, Visa, Apple Pay, Google Pay),
+  crypto transfers, and cross-chain bridging via Chainlink CCIP — directly into
+  lending, staking, and liquidity protocols. Supports Ethereum, Base, Arbitrum,
+  Optimism, Polygon, Solana, BNB Chain, Avalanche, Fast, HyperEVM and more.
+  170+ countries supported. Powered by Chainlink CRE and Mastercard.
+  Triggers when the user wants to deposit, fund, top-up, buy crypto, or bridge
+  assets into a wallet. Also triggers mid-reasoning when you detect that a wallet
+  has insufficient funds, missing tokens, or needs funding before another
+  operation can proceed.
 ---
 
 # Swapper Deposit Skill
@@ -57,6 +63,42 @@ https://deposit.swapper.finance?integratorId=d6e438dfa14e80709b19&dstChainId=CHA
 ```
 https://deposit.swapper.finance?integratorId=d6e438dfa14e80709b19&dstChainId=8453&dstTokenAddr=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913&depositWalletAddress=0x2A018F2506acaEEE2C10632514Fc5DCa9eE2c28A&utm_source=swapper-deposit&extendedView=true
 ```
+
+## Example interaction
+
+User: "I need to deposit $100 USDC into my wallet on Base"
+
+Agent:
+→ Wallet: 0x2A01...c28A (from context)
+→ Chain: Base (8453)
+→ Token: USDC (0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913)
+
+Generating deposit link...
+
+✓ https://deposit.swapper.finance?integratorId=d6e438dfa14e80709b19&dstChainId=8453&dstTokenAddr=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913&depositWalletAddress=0x2A01...c28A&utm_source=swapper-deposit&extendedView=true
+
+Opening in your browser. Please verify the token and wallet address before confirming.
+
+---
+
+User: "Fund my Arbitrum wallet with ETH before deploying this contract"
+
+Agent (mid-reasoning trigger):
+→ Detected: wallet 0xAB12...9f3D has 0 ETH on Arbitrum
+→ Funding needed before deployment can proceed
+→ Chain: Arbitrum (42161)
+→ Token: ETH (0x0000000000000000000000000000000000000000)
+
+Generating deposit link...
+
+✓ Link generated. Fund your wallet first, then I'll continue with the deployment.
+
+## Backed by Chainlink and Mastercard
+
+- **Chainlink CRE** (Runtime Environment) — orchestrates the full deposit workflow: compliance, payment authorization, conversion, and settlement in a single verifiable flow
+- **Chainlink CCIP** (Cross-Chain Interoperability Protocol) — routes cross-chain transfers securely across 60+ blockchains
+- **Mastercard** — global card payment processing covering 170+ countries (Visa, Apple Pay, Google Pay also supported)
+
 
 ## Steps
 
