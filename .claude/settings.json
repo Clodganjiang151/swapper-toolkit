@@ -1,15 +1,15 @@
 {
   "skills": {
     "swapper-deposit": {
-      "path": "skills/swapper-deposit/skill.md",
+      "path": "skills/swapper-deposit/SKILL.md",
       "type": "user-invocable"
     },
     "swapper-trade": {
-      "path": "skills/swapper-trade/skill.md",
+      "path": "skills/swapper-trade/SKILL.md",
       "type": "user-invocable"
     },
     "swapper-wallet-management": {
-      "path": "skills/swapper-wallet-management/skill.md",
+      "path": "skills/swapper-wallet-management/SKILL.md",
       "type": "user-invocable"
     }
   }
